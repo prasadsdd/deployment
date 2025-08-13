@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PashAI - Enterprise AI Solution</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="landing-page">
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-brain nav-icon"></i>
+                <span class="brand-text">Pash<span class="brand-accent">AI</span></span>
+            </div>
+            <div class="nav-links">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#how-it-works" class="nav-link">How it Works</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-background">
+            <div class="hero-grid"></div>
+            <div class="hero-dots"></div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-sparkles"></i>
+                    <span>AI-Powered Document Intelligence</span>
+                </div>
+                <h1 class="hero-title">
+                    Transform Your
+                    <span class="gradient-text">PDF Documents</span>
+                    Into Intelligent Conversations
+                </h1>
+                <p class="hero-subtitle">
+                    Experience next-generation document analysis with our enterprise-grade AI assistant. 
+                    Upload any PDF and engage in natural conversations to extract insights instantly.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">99.9%</div>
+                        <div class="stat-label">Accuracy</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">&lt;2s</div>
+                        <div class="stat-label">Response Time</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50MB</div>
+                        <div class="stat-label">Max File Size</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-upload">
+                <div class="upload-container">
+                    <div class="upload-header">
+                        <h3 class="upload-title">
+                            <i class="fas fa-rocket"></i>
+                            Get Started in Seconds
+                        </h3>
+                        <p class="upload-subtitle">Upload your PDF and start asking questions immediately</p>
+                    </div>
+                    
+                    <div class="upload-zone" id="uploadArea">
+                        <input type="file" id="fileInput" accept=".pdf" hidden>
+                        <div class="upload-visual">
+                            <div class="upload-icon-container">
+                                <i class="fas fa-cloud-upload-alt upload-main-icon"></i>
+                                <div class="upload-pulse"></div>
+                            </div>
+                            <div class="upload-text-content">
+                                <h4 class="upload-primary-text">Drop your PDF here</h4>
+                                <p class="upload-secondary-text">or <span class="upload-link">browse files</span></p>
+                                <div class="upload-features">
+                                    <span class="feature-tag"><i class="fas fa-shield-alt"></i> Secure</span>
+                                    <span class="feature-tag"><i class="fas fa-zap"></i> Fast</span>
+                                    <span class="feature-tag"><i class="fas fa-check"></i> Accurate</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="upload-progress" id="uploadProgress" style="display: none;">
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progressFill"></div>
+                            </div>
+                            <div class="progress-info">
+                                <span class="progress-text" id="progressText">Uploading...</span>
+                                <span class="progress-percentage">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="processing-section" id="processingSection" style="display: none;">
+                        <div class="processing-header">
+                            <h4>Processing Your Document</h4>
+                            <button class="processing-toggle" id="toggleProcessing">
+                                <i class="fas fa-eye"></i>
+                                <span>View Details</span>
+                            </button>
+                        </div>
+                        
+                        <div class="processing-details" id="processingDetails" style="display: none;">
+                            <div class="processing-timeline" id="processingStages">
+                                <!-- Processing stages will be added here -->
+                            </div>
+                        </div>
+                        
+                        <button class="btn-primary-large" id="proceedToChat" style="display: none;">
+                            <i class="fas fa-comments"></i>
+                            <span>Start Conversation</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="features-container">
+            <div class="section-header">
+                <h2 class="section-title">Powerful AI Features</h2>
+                <p class="section-subtitle">Built for enterprise-level document processing and analysis</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="feature-title">Advanced AI Processing</h3>
+                    <p class="feature-description">Powered by state-of-the-art language models for accurate document understanding</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">Lightning Fast</h3>
+                    <p class="feature-description">Get answers in under 2 seconds with our optimized processing pipeline</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Enterprise Security</h3>
+                    <p class="feature-description">Your documents are processed securely with enterprise-grade encryption</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works-section">
+        <div class="how-container">
+            <div class="section-header">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Three simple steps to unlock your document's potential</p>
+            </div>
+            <div class="steps-container">
+                <div class="step-item">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Upload Document</h3>
+                        <p class="step-description">Drag and drop or select your PDF document. We support files up to 50MB.</p>
+                    </div>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-item">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3 class="step-title">AI Processing</h3>
+                        <p class="step-description">Our AI analyzes and creates intelligent embeddings of your document content.</p>
+                    </div>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-item">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Ask Questions</h3>
+                        <p class="step-description">Start conversing with your document and get instant, accurate answers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="premium-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <i class="fas fa-brain"></i>
+                        <span>Pash<span class="brand-accent">AI</span></span>
+                    </div>
+                    <p class="footer-tagline">Enterprise AI Document Intelligence</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Product</h4>
+                        <a href="#features">Features</a>
+                        <a href="#pricing">Pricing</a>
+                        <a href="#security">Security</a>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Support</h4>
+                        <a href="#docs">Documentation</a>
+                        <a href="#help">Help Center</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2025 Pash.D AI. Made by <strong>Prasad Satish Dhumal</strong></p>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

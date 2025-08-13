@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat - PashAI Enterprise Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="chat-page">
+    <!-- Compact Navigation Header -->
+    <nav class="chat-nav-header-compact">
+        <div class="chat-nav-container-compact">
+            <div class="chat-nav-brand-compact">
+                <i class="fas fa-brain nav-icon-compact"></i>
+                <span class="brand-text">Pash<span class="brand-accent">AI</span></span>
+            </div>
+            <div class="document-info-inline">
+                <div class="document-icon-compact">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="document-meta-compact">
+                    <span class="document-name-compact">{{ pdf_name }}</span>
+                    <span class="document-id-compact">ID: {{ pdf_hash }}</span>
+                </div>
+                <div class="status-indicator-compact">
+                    <i class="fas fa-circle"></i>
+                    <span>Ready</span>
+                </div>
+            </div>
+            <div class="chat-nav-actions-compact">
+                <button class="nav-action-btn-compact" id="viewPdfBtn" title="View PDF Document">
+                    <i class="fas fa-eye"></i>
+                </button>
+                <button class="nav-action-btn-compact" id="clearChatBtn" title="Clear Chat History">
+                    <i class="fas fa-broom"></i>
+                </button>
+                <button class="nav-action-btn-compact" id="newDocumentBtn" title="Upload New Document">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Maximized Chat Container -->
+    <div class="maximized-chat-container">
+        <!-- Chat Background -->
+        <div class="chat-background">
+            <div class="chat-grid"></div>
+            <div class="chat-particles"></div>
+        </div>
+
+        <!-- Expanded Chat Messages Area -->
+        <main class="expanded-chat-messages-area">
+            <div class="chat-messages" id="chatMessages">
+                <!-- Compact Welcome Message -->
+                <div class="compact-welcome-conversation">
+                    <div class="compact-welcome-avatar">
+                        <div class="compact-avatar-container">
+                            <i class="fas fa-robot"></i>
+                            <div class="avatar-pulse"></div>
+                        </div>
+                    </div>
+                    <div class="compact-welcome-content">
+                        <h3 class="compact-welcome-title">
+                            <i class="fas fa-sparkles"></i>
+                            Hello! I'm your AI Assistant
+                        </h3>
+                        <p class="compact-welcome-description">
+                            Ready to help you explore your PDF document. Ask me anything and I'll provide detailed answers.
+                        </p>
+                        <div class="compact-welcome-features">
+                            <div class="feature-chip-compact">
+                                <i class="fas fa-search"></i>
+                                <span>Intelligent Search</span>
+                            </div>
+                            <div class="feature-chip-compact">
+                                <i class="fas fa-bolt"></i>
+                                <span>Fast Responses</span>
+                            </div>
+                            <div class="feature-chip-compact">
+                                <i class="fas fa-brain"></i>
+                                <span>Deep Understanding</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Compact Chat Input Area -->
+        <footer class="compact-chat-input-section">
+            <div class="compact-input-background"></div>
+            <div class="compact-chat-input-container">
+                <div class="compact-input-wrapper">
+                    <div class="compact-input-field-container">
+                        <textarea 
+                            id="messageInput" 
+                            placeholder="Ask me anything about your PDF document..." 
+                            rows="1"></textarea>
+                        <div class="input-decorations">
+                            <div class="input-glow"></div>
+                        </div>
+                    </div>
+                    <button id="sendBtn" class="compact-send-btn">
+                        <div class="btn-content">
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
+                        <div class="btn-ripple"></div>
+                    </button>
+                </div>
+                <div class="compact-input-hints">
+                    <div class="hint-item">
+                        <kbd>Enter</kbd>
+                        <span>Send</span>
+                    </div>
+                    <div class="hint-item">
+                        <kbd>Shift + Enter</kbd>
+                        <span>New line</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay-modern" id="loadingOverlay" style="display: none;">
+        <div class="loading-content-modern">
+            <div class="loading-animation">
+                <div class="loading-brain">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="loading-waves">
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                </div>
+            </div>
+            <h3>Processing your question...</h3>
+            <p>AI is analyzing your document to provide the best answer</p>
+        </div>
+    </div>
+
+    <!-- Minimal Footer -->
+    <div class="minimal-footer">
+        <div class="minimal-footer-content">
+            <span>© 2025 Pash.D AI. Made by <strong>Prasad Satish Dhumal</strong></span>
+        </div>
+    </div>
+
+    <script>
+        // Pass data from Flask to JavaScript
+        const PDF_NAME = "{{ pdf_name }}";
+        const PDF_HASH = "{{ pdf_hash }}";
+    </script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

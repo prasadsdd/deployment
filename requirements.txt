@@ -1,0 +1,24 @@
+langchain-aws==0.2.29
+langchain-docling==1.0.0
+langchain-core==0.3.72
+langchain-community==0.3.27
+langchain-pinecone==0.2.11
+pinecone-client==3.2.2
+pydantic==2.11.7
+numpy==1.26.4
+boto3==1.39.17
+streamlit
+werkzeug
+flask
+cohere==5.11.0
+rank-bm25==0.2.2
+python-dotenv==1.0.1
+pypdf==4.3.1
+
+# Optional but recommended
+# psutil==6.0.0
+# jina==3.27.0
+
+
+
+# #pip install "unstructured[pdf]"
