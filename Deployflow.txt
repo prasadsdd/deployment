@@ -1,0 +1,70 @@
+
+
+1. Getting started with CI-CD process:
+      * Setup the dockerfile and .dockerignore file
+      * Setup the .github\workflows dir and aws.yaml file within
+
+
+      * Go to AWS console and create a new IAM user
+
+IAM User = user >> create user >> go to policy >>( AmazonBedrockFullAccess, AmazonEC2ContainerRegistryFullAccess , AmazonEC2FullAccess ) give access to this policys.
+user name >> Security Credentials >> create access key >> command Line Interface (CLI) >> i under >> next >> create access key >> download.csv >> done .
+ 
+
+
+      * Now create one ECR repo to store/save docker image:
+        AWS console >> Go to ECR >> Region: us-east-1 >> Hit create repository >>
+        repo name: vehicleproj >> hit create repository >> copy and keep uri
+
+
+      * Now create EC2 Ubuntu server >> AWS console >> EC2 >> Launch Instance >> name: vehicledata-machine
+        >> Image: Ubuntu >> AMI: Ubuntu Server 24.04 (free tier) >> Instance: T2 Medium (~chargeable-3.5rs/hr)
+        >> create new key pair (name: proj1key) >> allow for https and http traffic >> storage: 30gb >> Launch
+        >> Go to instance >> click on "Connect" >> Connect using EC2 Instance Connect 
+        >> Connect (Terminal will be launched) 
+
+
+
+2. Open EC2 and Install docker in EC2 Machine:
+      ## Optinal
+      sudo apt-get update -y
+      sudo apt-get upgrade
+      ## Required (Because Docker is'nt there in our EC2 server - [docker --version])
+      curl -fsSL https://get.docker.com -o get-docker.sh
+      sudo sh get-docker.sh
+      sudo usermod -aG docker ubuntu
+      newgrp docker
+
+3. Next step is to connect Github with EC2(Self hosted runner):
+      * select your project on Github >> go to settings >> Actions >> Runner >> New self hosted runner
+        >> Select OS (Linux) >> Now step by step run all "Download" related commands on EC2 server 
+
+        >> run first "Configure" command (hit enter instead of setting a runner group, runner name: self-hosted)
+        >> enter any additional label (hit enter to skip) >> name of work folder (again hit enter)
+
+        >> Now run second "Configure" command (./run.sh) and runner will get connected to Github
+        >> To crosscheck, go back to Github and click on Runner and you will see runner state as "idle"
+        >> If you do ctrl+c on EC2 server then runner will shut then restart with "./run.sh"
+
+
+4. Setup your Github secrets: (Github project>Settings>Secretand Variable>Actions>NewRepoSecret)
+      AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY
+      AWS_DEFAULT_REGION
+      ECR_REPO
+
+5. CI-CD pipeline will be triggered at next commit and push.
+
+
+6. Now we need to activate the 5000 port of our EC2 instance:
+      * Go to the instance > Security > Go to Security Groups > Edit inbound rules > add rule
+        > type: Custom TCP > Port range: 5000 > 0.0.0.0/0 > Save rules
+7. Now paste the public ip address on the address bar +:5080 and your app will be launched.
+
+
+
+
+
+
+
+590183935584.dkr.ecr.us-east-1.amazonaws.com/rag = rag
