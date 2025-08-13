@@ -5,5 +5,3 @@ pycache/
 .gitignore
 .DS_Store
 *.log
-
-.env
