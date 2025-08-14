@@ -17,7 +17,7 @@ from pinecone import Pinecone, ServerlessSpec
 import traceback
 
 
-# Load environment variables
+# Load environment variables.
 load_dotenv()
 
 class RAGProcessor:
