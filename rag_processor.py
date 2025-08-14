@@ -34,7 +34,7 @@ class RAGProcessor:
         
         print("Initializing ChatBedrock...")
         self.llm = ChatBedrock(
-            model_id="meta.llama3-70b-instruct-v1:0",
+            model_id="anthropic.claude-3-7-sonnet-20250219-v1:0",
             region_name="us-east-1"
         )
         
